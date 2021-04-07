@@ -1,0 +1,38 @@
+https://learn.unity.com/tutorial/anaconda-environment-setup?uv=2019.3&courseId=5e470160edbc2a15578b13d7&projectId=5ec83171edbc2a44309bf22e#
+
+conda create -n ml-agents-1.0.7 python=3.7
+
+pip install mlagents
+
+conda activate ml-agents-1.0.7 //per selezionare l'environment
+
+mlagents-learn ./trainer_config.yaml --run-id hb_01 //per avviare il training
+
+python -m mlagents.trainers.upgrade_config trainer_config.old.yaml trainer_config.yaml //per aggiornare i config
+
+Ctrl+C stoppa il training oppure stoppi il gioco in unity
+
+In recent versions of ML-Agents, the model uses the ONNX standard. Instead of an .nn file, look for an .onnx file
+
+
+
+//Per tensorflow:
+Error: Getting 'tensorboard' is not recognized as an internal or external command
+
+Fix:
+
+1 - Open a new Anaconda prompt
+2 - run this command:
+conda create -n tf tensorflow
+3 - conda activate tf
+4 - Now that you are in the tf environment navigate to your hummingbird ml agents folder (Same way you navigated when you wanted to run the mlagents-learn command). For me its;
+
+(tf) C:\Users\Hammed>cd C:\Users\Hammed\Documents\Unity ML Agents\Humming Bird
+
+5 - Run this command:
+
+tensorboard --logdir results --port 6006
+
+6 -Open the results on your browser (edge, chrome etc);
+
+http://localhost:6006/
