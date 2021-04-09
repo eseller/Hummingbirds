@@ -348,6 +348,8 @@ public class HummingbirdAgent : Agent
 
             //Safe position has been found if no colliders are overlapped
             safePositionFound = colliders.Length == 0;
+
+            attemptsRemaining--;
         }
 
         Debug.Assert(safePositionFound, "Could not find a safe position to spawn");
@@ -355,7 +357,6 @@ public class HummingbirdAgent : Agent
         //Set the position and rotation
         transform.position = potentialPosition;
         transform.rotation = potentialRotation;
-        attemptsRemaining--;
     }
 
     /// <summary>
